@@ -35,6 +35,10 @@ module.exports = {
         },
       },
       {
+        test: /\.svg$/i,
+        use: ['@svgr/webpack'],
+      },
+      {
         test: /.(woff,woff2,ttf)$/,
         type: 'asset/resource',
         generator: {
