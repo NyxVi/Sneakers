@@ -1,0 +1,37 @@
+.carousel {
+  position: relative;
+  z-index: $z-normal;
+  height: 340px;
+  overflow: hidden;
+  &-container {
+    height: 100%;
+    width: 100%;
+  }
+  &-img {
+    width: 100%;
+    max-width: 700px;
+    height: 100%;
+    object-fit: cover;
+    // object-position: center;
+  }
+  &-previous,
+  &-next {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: $white;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  &-previous {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 16px;
+  }
+  &-next {
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+  }
+}

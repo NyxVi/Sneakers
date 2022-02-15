@@ -1,5 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -13,6 +14,10 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.js'],
+    alias: {
+      '@icons': path.resolve(__dirname, 'src/assets/icons/'),
+      '@images': path.resolve(__dirname, 'src/assets/images/'),
+    },
   },
   module: {
     rules: [
@@ -31,7 +36,7 @@ module.exports = {
         test: /.(png|jpg|jpeg)$/,
         type: 'asset/resource',
         generator: {
-          filename: './images/[hash][ext]',
+          filename: 'images/[hash][ext]',
         },
       },
       {
@@ -39,7 +44,7 @@ module.exports = {
         use: ['@svgr/webpack'],
       },
       {
-        test: /.(woff,woff2,ttf)$/,
+        test: /.(woff|woff2|ttf)$/,
         type: 'asset/resource',
         generator: {
           filename: './fonts/[name][ext]',
@@ -49,12 +54,20 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './style/[name].[contenthash].css',
+      filename: './style/[name].css',
     }),
     new HtmlWebpackPlugin({
       inject: true,
       template: './public/index.html',
       filename: './index.html',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src', 'assets/images'),
+          to: 'images',
+        },
+      ],
     }),
   ],
   devServer: {

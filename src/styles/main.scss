@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+img {
+  max-width: 100%;
+}
+
+@import 'var';
+@import 'fonts';
+html {
+  font-family: Kumbh;
+  background-color: $white;
+}
+@import 'Header';
+@import 'root';
+@import 'smll';
+@import 'modal';
+@import 'card';
+@import 'button';
+@import 'carousel';
+@import 'counter';
+@import 'product';
+@import 'upCard';
+@import 'gallery';
+
+.inline-block {
+  display: inline-block;
+}
+.span-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.c-pointer {
+  cursor: pointer;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.productBoddy {
+  @media screen and (min-width: 700px) {
+    display: flex;
+    max-width: 950px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 2.5em 0;
+    &-text {
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}

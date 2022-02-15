@@ -1,0 +1,15 @@
+.counter {
+  background-color: $lightGrayishBlue;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 1em 1.2em;
+  border-radius: 0.4em;
+  &-num {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 50px;
+    background-color: transparent;
+  }
+}

@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: './src/index.js',
@@ -12,6 +13,10 @@ module.exports = {
   mode: 'production',
   resolve: {
     extensions: ['.js'],
+    alias: {
+      '@icons': path.resolve(__dirname, 'src/assets/icons/'),
+      '@images': path.resolve(__dirname, 'src/assets/images/'),
+    },
   },
   module: {
     rules: [
@@ -34,7 +39,11 @@ module.exports = {
         },
       },
       {
-        test: /.(woff,woff2,ttf)$/,
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      {
+        test: /.(woff|woff2|ttf)$/,
         type: 'asset/resource',
         generator: {
           filename: './fonts/[name][ext]',
@@ -50,6 +59,14 @@ module.exports = {
       inject: true,
       template: './public/index.html',
       filename: './index.html',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src', 'assets/images'),
+          to: 'images',
+        },
+      ],
     }),
   ],
 }

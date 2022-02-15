@@ -1,0 +1,21 @@
+.gallery {
+  $radius: 10px;
+  // min-width: 440px;
+  max-width: 400px;
+  &-view {
+    img {
+      border-radius: $radius + 6px;
+    }
+  }
+  &-photos {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 1.4em 0;
+    img {
+      border-radius: $radius;
+      width: 85px;
+    }
+  }
+}
